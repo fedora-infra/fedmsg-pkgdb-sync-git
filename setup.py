@@ -9,7 +9,7 @@ setup(
     author='Janez Nemanič, Ralph Bean and Pierre-Yves Chibon',
     author_email='admin@fedoraproject.org',
     url='https://github.com/fedora-infra/fedmsg-pkgdb2branch',
-    install_requires=["fedmsg"],
+    install_requires=["fedmsg", "fedmsg_meta_fedora_infrastructure"],
     packages=[],
     py_modules=['fedmsg_pkgdb2branch'],
     entry_points="""
