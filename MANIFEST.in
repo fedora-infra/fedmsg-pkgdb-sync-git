@@ -1,0 +1,4 @@
+graft fedmsg.d
+include *.rst
+include LICENSE
+include python-fedmsg-pkgdb2branch.spec
