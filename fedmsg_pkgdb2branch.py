@@ -11,6 +11,7 @@ Authors:    Janez Nemanič <janez.nemanic@gmail.com>
 import pprint
 import subprocess
 import fedmsg.consumers
+import fedmsg.meta
 import moksha.hub.reactor
 
 
@@ -69,8 +70,13 @@ class FasClientConsumer(fedmsg.consumers.FedmsgConsumer):
     def action(self, messages):
         self.log.debug("Acting on %s" % pprint.pformat(messages))
 
+        pkgs = set()
+        for msg in messages:
+            pkgs.update(fedmsg.meta.msg2packages(msg))
+
         command = '/usr/bin/sudo -i /usr/bin/ansible-playbook ' \
-            '/srv/web/infra/ansible/playbooks/run_pkgdb2branch.yml'
+            '/srv/web/infra/ansible/playbooks/run_pkgdb2branch.yml '\
+            '--extra-vars="package=\'%s\'"' % ';'.join(pkgs)
         command = command.split()
 
         self.log.info("Running %r" % command)
