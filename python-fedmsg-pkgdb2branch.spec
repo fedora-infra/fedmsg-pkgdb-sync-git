@@ -24,6 +24,7 @@ BuildRequires:      fedmsg
 
 Requires:           fedmsg
 Requires:           fedmsg-hub
+Requires:           python-fedmsg-meta-fedora-infrastructure
 
 %description
 A simple script monitoring fedmsg for FAS messages, delaying action
