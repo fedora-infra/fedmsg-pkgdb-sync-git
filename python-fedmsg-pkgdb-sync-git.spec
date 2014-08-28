@@ -4,16 +4,16 @@
 %{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %endif
 
-%global modname fedmsg_pkgdb2branch
+%global modname fedmsg_pkgdb_sync_git
 
-Name:               python-fedmsg-pkgdb2branch
+Name:               python-fedmsg-pkgdb-sync-git
 Version:            0.1
 Release:            1%{?dist}
-Summary:            A fedmsg consumer that runs pkgdb2branch in response to FAS messages
+Summary:            A fedmsg consumer that runs pkgdb_sync_git in response to FAS messages
 
 Group:              Development/Libraries
 License:            LGPLv2+
-URL:                https://github.com/fedora-infra/fedmsg-pkgdb2branch/
+URL:                https://github.com/fedora-infra/fedmsg-pkgdb_sync_git/
 Source0:            http://pypi.python.org/packages/source/f/%{modname}/%{modname}-%{version}.tar.gz
 
 BuildArch:          noarch
@@ -44,15 +44,15 @@ rm -rf %{modname}.egg-info
 %{__python2} setup.py install -O1 --skip-build --root=%{buildroot}
 
 mkdir -p %{buildroot}%{_sysconfdir}/fedmsg.d/
-cp -p fedmsg.d/pkgdb2branch-example-config.py \
-    %{buildroot}%{_sysconfdir}/fedmsg.d/pkgdb2branch.py
+cp -p fedmsg.d/pkgdb_sync_git-example-config.py \
+    %{buildroot}%{_sysconfdir}/fedmsg.d/pkgdb_sync_git.py
 
 %files
 %doc README.rst LICENSE
 %{python2_sitelib}/%{modname}.py*
 %{python2_sitelib}/%{modname}-%{version}*
 
-%config(noreplace) %{_sysconfdir}/fedmsg.d/pkgdb2branch.py*
+%config(noreplace) %{_sysconfdir}/fedmsg.d/pkgdb_sync_git.py*
 
 %changelog
 * Fri Aug 22 2014 Pierre-Yves Chibon <pingou@pingoured.fr> - 0.1-1
