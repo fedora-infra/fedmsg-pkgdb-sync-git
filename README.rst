@@ -1,5 +1,5 @@
-fedmsg-pkgdb2branch
-===================
+fedmsg-pkgdb-sync-git
+=====================
 
 An example of using `fedmsg <http://fedmsg.com>`_ to monitor `pkgdb
 <https://admin.fedoraproject.org/pkgdb>`_ for messages, and delaying
@@ -14,7 +14,7 @@ Running
     sudo yum install python-virtualenvwrapper
 
     # In a new terminal
-    mkvirtualenv fedmsg-pkgdb2branch
+    mkvirtualenv fedmsg-pkgdb-sync-git
     python setup.py develop
     fedmsg-hub
 
