@@ -75,8 +75,7 @@ class FasClientConsumer(fedmsg.consumers.FedmsgConsumer):
             pkgs.update(fedmsg.meta.msg2packages(msg))
 
         command = '/usr/bin/sudo -i /usr/bin/ansible-playbook ' \
-            '/srv/web/infra/ansible/playbooks/run_pkgdb2branch.yml '\
-            '--extra-vars="package=\'%s\'"' % ';'.join(pkgs)
+            '/srv/web/infra/ansible/playbooks/run_pkgdb_sync_git.yml '
         command = command.split()
 
         self.log.info("Running %r" % command)
